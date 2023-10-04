@@ -1,0 +1,96 @@
+body {
+    background-image: url('../images/image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.logo_container {
+    margin-top: 40px;
+}
+
+.logo {
+    height: auto;
+    width: 100%;
+    display: block;
+
+}
+.header{
+    margin-top: 5%;
+    display: flex;
+    justify-items: left;
+    align-items: center;
+    gap: 40%;
+    margin-left: 10%;
+    margin-right: 20%;
+}
+
+#back {
+    width: 80px;
+    border: solid 2px;
+    border-radius: 10px;
+    height: 40px;
+    margin: 0%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 50px;
+    font-family: Times;
+    margin: 0%;
+}
+
+form {
+    margin-top: 40px;
+}
+
+label {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: times;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+input {
+    width: 45%;
+    padding: 15px;
+    margin-left: 25%;
+    border: 2px solid #000;
+    font-size: 15px;
+    font-style: italic;
+    font-family: times;
+    border-radius: 5px;
+}
+
+.container {
+    margin: 0 auto;
+    border: solid 3px;
+    width: 700px;
+    height: auto;
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 10px;
+
+}
+
+#login {
+    width: 100px;
+    border: solid 2px;
+    border-radius: 20px;
+    height: 50px;
+    margin-bottom: 10%;
+}
+
+.text {
+    text-align: left;
+    margin-left: 30px;
+}
+
+a {
+    text-decoration: none;
+    font-display: inherit;
+}
+

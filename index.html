@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Students Form</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="logo_container">
+            <img class="logo" src="images/ctulogo.png" alt="CTU Logo">
+        </div>
+
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "NINOmharlito2002";
+        $dbname = "testdb";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Count the number of entries for today
+        $today_entries_query = "SELECT COUNT(*) as entry_count FROM userdata WHERE DATE(datetime) = CURDATE()";
+        $today_entries_result = $conn->query($today_entries_query);
+        $today_entries = $today_entries_result->fetch_assoc()["entry_count"];
+
+        $total_entries_today = $today_entries;
+
+        // Calculate the remaining slots
+        $remaining_slots = 50 - $total_entries_today;
+
+        // Define CSS classes for styling
+        $slotsMessageClass = ($remaining_slots > 0) ? 'slots-available' : 'slots-not-available';
+
+        ?>
+
+        <!-- Display the slots message with CSS styles -->
+        <div class="<?php echo $slotsMessageClass; ?>">
+            <?php
+            if ($remaining_slots > 0) {
+                echo '<span>' . $remaining_slots . '</span> slots available';
+            } else {
+                echo 'No slots available today!';
+            }
+            ?>
+        </div>
+
+
+
+        <div class="nav">
+            <h1>Enter your Credentials</h1>
+            <button id="data">
+                <p class="login">DATA</p>
+            </button>
+        </div>
+
+        <form action="php/process.php" method="post">
+            <input type="hidden" id="datetime" name="datetime">
+            <div class="credentials">
+                <p class="cont">Enter your Name:</p>
+                <div class="name_container">
+                    <div class="credentials_container">
+                        <label for="first_name" class="name"></label>
+                        <div>
+                            <input type="text" id="first_name" name="first_name" placeholder="FIRST NAME" class="name"
+                                required maxlength="50">
+                        </div>
+                    </div>
+
+                    <div class="credentials_container">
+                        <label for="middle_initial" class="name"></label>
+                        <div>
+                            <input type="text" id="middle_initial" name="middle_initial" class="mi" placeholder="M.I."
+                                maxlength="1">
+                        </div>
+                    </div>
+
+                    <div class="credentials_container">
+                        <label for="last_name" class="name"></label>
+                        <div>
+                            <input type="text" id="last_name" name="last_name" placeholder="LAST NAME" class="name"
+                                required maxlength="50">
+                        </div>
+                    </div>
+                </div>
+                <div class="number">
+                    <div class="num_container">
+                        <label for="id">
+                            <p class="cont">ID Number:</p>
+                        </label>
+                        <div class="id">
+                            <input class="num" type="text" id="id" name="id" placeholder="723xxxx" maxlength="7"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="num_container">
+                        <label for="contact">
+                            <p class="cont">Contact Number:</p>
+                        </label>
+                        <div class="contact">
+                            <input class="num" type="text" id="contact" name="contact" placeholder="09xxxxxxxxx"
+                                maxlength="11" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="coseb">
+                    <div class="course">
+                        <label for="course">
+                            <p class="opt">Course:</p>
+                        </label>
+                        <select id="course" name="course" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="BSIT">BSIT</option>
+                            <option value="BIT">BIT</option>
+                            <option value="BSED">BSED</option>
+                            <option value="BSHM">BSHM</option>
+                            <option value="BSIE">BSIE</option>
+                        </select>
+                    </div>
+
+                    <div class="blood">
+                        <label for="blood">
+                            <p class="opt">Blood Type:</p>
+                        </label>
+                        <select id="blood" name="blood" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="O">O</option>
+                        </select>
+                    </div>
+
+                    <div class="bday">
+                        <div>
+                            <label for="bday">
+                                <p class="cont">Birthday:</p>
+                            </label>
+                            <input class="bdayselector" type="date" id="bday" name="bday">
+                        </div>
+                    </div>
+                </div>
+                
+                <label for="guardian">
+                    <p class="cont">Guardian:</p>
+                </label>
+
+                <div class="name_container">
+                    <div class="credentials_container">
+                        <label for="gfirst_name" class="name"></label>
+                        <div>
+                            <input type="text" id="gfirst_name" name="gfirst_name" placeholder="FIRST NAME" class="name"
+                                required maxlength="50">
+                        </div>
+                    </div>
+
+                    <div class="credentials_container">
+                        <label for="gmiddle_initial" class="name"></label>
+                        <div>
+                            <input type="text" id="gmiddle_initial" name="gmiddle_initial" class="mi" placeholder="M.I."
+                                maxlength="1">
+                        </div>
+                    </div>
+
+                    <div class="credentials_container">
+                        <label for="glast_name" class="name"></label>
+                        <div>
+                            <input type="text" id="glast_name" name="glast_name" placeholder="LAST NAME" class="name"
+                                required maxlength="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sbutton-container">
+                <div class="submit">
+                    <input class="sbutton" type="button" value="Submit" id="previewButton">
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Preview overlay -->
+    <div class="overlay" id="overlay">
+        <div class="preview-box">
+            <div class="pContent" id="previewContent"></div>
+
+            <div class="textbox_text">
+                <label>
+                    <input type="checkbox" id="confirmCheckbox">
+                    <span class="vtext">
+                        I hereby confirm that the informatiol <br> provided is accurate and represents my credentials.
+                    </span>
+                </label>
+            </div>
+            <div class="psbutton">
+                <button class="pbutton" id="cancelButton">Cancel</button>
+                <button class="pbutton" id="confirmButton" disabled>Submit</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Display Priority Number -->
+    <div class="priority-number" id="priorityNumber" style="display: none;"></div>
+
+</body>
+
+</html>

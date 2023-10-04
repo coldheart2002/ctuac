@@ -1,0 +1,84 @@
+#back {
+    width: 80px;
+    border: solid 2px;
+    border-radius: 10px;
+    height: 40px;
+    margin: 0%;
+}
+h2 {
+    text-align: center;
+}
+
+.search-container {
+    text-align: center;
+    margin: 20px;
+}
+input {
+    width: 40%;
+    height: 30px;
+    border: solid 2px;
+    border-radius: 5px;
+}
+
+.searchbutton {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+/* Add this style to highlight the active page */
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status-pending {
+    background-color: white;
+    /* Default background color */
+}
+
+.status-done {
+    background-color: yellow;
+}
+
+.status-released {
+    background-color: green;
+}
+
+.status-unclaimed {
+    background-color: red;
+}

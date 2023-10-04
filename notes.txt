@@ -1,0 +1,19 @@
+CREATE TABLE userdata (
+    number INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+    id VARCHAR(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+    contact VARCHAR(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+    gname VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,course ENUM('BSIT', 'BIT', 'BSED', 'BSHM', 'BSIE') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+    blood ENUM('A', 'B', 'AB', 'O') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+    bday DATE,
+    datetime DATETIME,
+    id_status ENUM('pending', 'done', 'released', 'unclaimed') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'pending'
+);
+
+
+DELETE FROM userdata;
+ALTER TABLE userdata AUTO_INCREMENT = 1;
+OPTIMIZE TABLE userdata;
+
+apche > httpd-vhosts.conf
+Require all granted
